@@ -1,0 +1,17 @@
+[tool.kedro]
+package_name = "desafio_machine_learning_engineer"
+project_name = "Desafio Machine Learning Engineer"
+project_version = "0.18.2"
+
+[tool.isort]
+profile = "black"
+
+[tool.pytest.ini_options]
+addopts = """
+--cov-report term-missing \
+--cov src/desafio_machine_learning_engineer -ra"""
+
+[tool.coverage.report]
+fail_under = 0
+show_missing = true
+exclude_lines = ["pragma: no cover", "raise NotImplementedError"]
