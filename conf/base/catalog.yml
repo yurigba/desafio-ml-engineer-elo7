@@ -1,9 +1,58 @@
-# Here you can define all your data sets by using simple YAML syntax.
-#
-# Documentation for this file format can be found in "The Data Catalog"
-# Link: https://
+# Catalogo com os dados estruturados da pipeline
 
 elo7_recruitment_dataset:
   type: pandas.CSVDataSet
   filepath: data/01_raw/elo7_recruitment_dataset.csv
 
+input_dataset:
+  type: pandas.CSVDataSet
+  filepath: data/02_intermediate/input_columns.csv
+
+train_dataset:
+  type: pandas.CSVDataSet
+  filepath: data/03_primary/train_dataset.csv
+
+train_x_input:
+  type: pickle.PickleDataSet
+  filepath: data/05_model_input/train_x_input.pickle
+
+test_dataset:
+  type: pandas.CSVDataSet
+  filepath: data/03_primary/test_dataset.csv
+
+test_x_input:
+  type: pickle.PickleDataSet
+  filepath: data/05_model_input/test_x_input.pickle
+
+vectorizer:
+  type: pickle.PickleDataSet
+  filepath: data/06_models/vectorizer.pickle
+
+model:
+  type: pickle.PickleDataSet
+  filepath: data/06_models/model.pickle
+
+y_pred:
+  type: pickle.PickleDataSet
+  filepath: data/07_model_output/y_pred.pickle
+
+classification_report:
+  type: text.TextDataSet
+  filepath: data/08_reporting/classification_report.txt
+
+
+##############
+# INFERENCIA #
+##############
+
+inference_test:
+  type: json.JSONDataSet
+  filepath: data/01_raw/test_inference.json
+
+vectorized_inference_test:
+  type: pickle.PickleDataSet
+  filepath: data/07_model_output/vectorized_inference_test.pickle
+
+inference_model_output:
+  type: json.JSONDataSet
+  filepath: data/07_model_output/inference_model_output.json
