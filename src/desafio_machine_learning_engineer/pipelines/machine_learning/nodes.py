@@ -2,8 +2,20 @@
 Nós utilizados para o treino e teste de modelo
 """
 
+import pandas as pd
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.svm import SVC
+
+def data_loader(df):
+    
+    out_df = pd.DataFrame(
+        { # Trocamos os numeros pela expressao NUM usando regex
+            "title": df["title"].replace(r"\d+", 'NUM', regex=True),
+            "category": df["category"]
+            }
+        )
+    
+    return out_df
 
 def fit_vectorizer(train_input):
     

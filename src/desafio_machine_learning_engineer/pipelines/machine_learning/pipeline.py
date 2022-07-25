@@ -10,14 +10,15 @@ from .nodes import (
     fit_svm,
     fit_vectorizer,
     apply_model,
-    apply_vectorizer
+    apply_vectorizer,
+    data_loader
 )
 
 def create_pipeline(**kwargs) -> Pipeline:
     return pipeline([
         node( # Filtra as colunas necessarias
             name="carregamento_de_dados",
-            func= lambda df: df[["title", "category"]],
+            func= data_loader,
             inputs= "elo7_recruitment_dataset",
             outputs= "input_dataset"
         ),
