@@ -35,6 +35,23 @@ def format_input(input):
             "products": [],
             "status": 400
             }
+        
+def format_input_fastapi(input):
+    
+    """
+    FORMAT INPUT - checa o input e formata para ser aplicado no vectorizer
+    """
+    
+    titles = []
+    
+    for product in input.products:
+        
+        titles.append(re.sub(r"\d+", "NUM", product.title))
+            
+    return {
+        "products": titles,
+        "status": 200
+        }
 
 def apply_vectorizer(vectorizer, input):
     

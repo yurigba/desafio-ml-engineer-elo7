@@ -1,0 +1,8 @@
+pytest-cov~=3.0
+pytest-mock>=1.7.1, <2.0
+pytest~=6.2
+pydantic==1.9.1
+pandas==1.4.3
+scikit-learn==1.1.1
+fastapi==0.66.1
+uvicorn==0.17.6
