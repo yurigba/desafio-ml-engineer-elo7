@@ -16,7 +16,7 @@ from .nodes import (
 def create_pipeline(**kwargs) -> Pipeline:
     return pipeline([
         node( # Filtra as colunas necessarias
-            name="filter_columns",
+            name="carregamento_de_dados",
             func= lambda df: df[["title", "category"]],
             inputs= "elo7_recruitment_dataset",
             outputs= "input_dataset"
@@ -35,31 +35,31 @@ def create_pipeline(**kwargs) -> Pipeline:
             outputs= ["train_dataset", "test_dataset"]
         ),
         node(
-            name="fit_vectorizer",
+            name="treino_transformacao_de_dados",
             func=fit_vectorizer,
             inputs="train_dataset",
             outputs=["vectorizer", "train_x_input"]
         ),
         node(
-            name="fit_svm",
+            name="modelagem_treino",
             func=fit_svm,
             inputs=["train_x_input", "train_dataset"],
             outputs="model"
         ),
         node(
-            name="apply_vectorizer",
+            name="teste_transformacao_de_dados",
             func=apply_vectorizer,
             inputs=["vectorizer","test_dataset"],
             outputs="test_x_input"
         ),
         node(
-            name="apply_svm",
+            name="modelagem_teste",
             func=apply_model,
             inputs=["model", "test_x_input"],
             outputs="y_pred"
         ),
         node(
-            name="classification_report",
+            name="validacao_de_modelo",
             func=lambda df, y_pred: classification_report(df["category"], y_pred),
             inputs=["test_dataset", "y_pred"],
             outputs="classification_report"
