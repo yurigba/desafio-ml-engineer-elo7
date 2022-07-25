@@ -19,6 +19,9 @@ class TestFormat:
                 {
                     "title": "Carrinho de Bebê"
                 },
+                {
+                    "title": "Teste 123"
+                }
             ]
         }
         
@@ -28,8 +31,17 @@ class TestFormat:
         
         assert isinstance(output["products"], list)
         
-        # Checa se todos os elementos que saem no output sao strings
-        assert all(isinstance(product, str) for product in output["products"])
+        # Checa se o output e valido
+        assert output == {
+            "products": [
+                "Lembrancinha",
+                "Carrinho de Bebê",
+                "Teste NUM"
+            ],
+            "status": 200
+        }
+        
+        
         
     def test_format_bad_key1(self):
         
