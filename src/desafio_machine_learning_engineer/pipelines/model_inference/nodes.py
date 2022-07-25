@@ -1,7 +1,4 @@
-"""
-This is a boilerplate pipeline 'model_inference'
-generated using Kedro 0.18.2
-"""
+import re
 
 def format_input(input):
     
@@ -19,7 +16,8 @@ def format_input(input):
             # 2. checa se a chave title esta presente e se o que tem dentro e string
             if "title" in product and isinstance(product["title"], str):
                 
-                titles.append(product["title"])
+                # 3. troca os numeros pelo token NUM
+                titles.append(re.sub(r"\d+", "NUM", product["title"]))
                 
             else:
                 return {
