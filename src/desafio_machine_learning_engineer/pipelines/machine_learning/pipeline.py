@@ -36,7 +36,7 @@ def create_pipeline(**kwargs) -> Pipeline:
             outputs= ["train_dataset", "test_dataset"]
         ),
         node(
-            name="treino_transformacao_de_dados",
+            name="transformacao_de_dados_de_treino",
             func=fit_vectorizer,
             inputs="train_dataset",
             outputs=["vectorizer", "train_x_input"]
@@ -48,7 +48,7 @@ def create_pipeline(**kwargs) -> Pipeline:
             outputs="model"
         ),
         node(
-            name="teste_transformacao_de_dados",
+            name="transformacao_de_dados_de_teste",
             func=apply_vectorizer,
             inputs=["vectorizer","test_dataset"],
             outputs="test_x_input"
