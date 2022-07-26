@@ -4,13 +4,16 @@
 # ignore Dockerfile and .dockerignore
 Dockerfile
 .dockerignore
+Containerfile
+Containerfile.inference
+Containerfile.viz
 
 # ignore potentially sensitive credentials files
-conf/**/*credentials*
+# conf/**/*credentials*
 
 # ignore all local configuration
-conf/local
-!conf/local/.gitkeep
+# conf/local
+# !conf/local/.gitkeep
 
 # ignore everything in the following folders
 logs

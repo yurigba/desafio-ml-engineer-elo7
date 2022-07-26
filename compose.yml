@@ -11,14 +11,27 @@ version: "3.7"
 services:
 
   api:
-    build: ./
-    # dockerfile: ./Containerfile
+    build:
+      context: .
+      dockerfile: ./Containerfile.inference
     ports:
       - "8000:8000"
     networks:
       - api-network
 
+  viz:
+    build:
+      context: .
+      dockerfile: ./Containerfile.viz
+    ports:
+      - "8001:8001"
+    networks:
+      - viz-network
+
+
 networks:
   api-network:
     driver: bridge
     # attachable: true
+  viz-network:
+    driver: bridge

@@ -14,3 +14,4 @@ pandas==1.4.3
 scikit-learn==1.1.1
 fastapi==0.66.1
 uvicorn==0.17.6
+kedro-viz==4.7.1
